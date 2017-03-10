@@ -28,8 +28,10 @@ app.controller("SearchTypeController", ['$scope', 'Tracks', 'TrackSearchTypeServ
     TrackSearchTypeService.searchType();
     $scope.tracks = TrackSearchTypeService.getTracks();
     console.log($scope.tracks);
-
-
   }
+
+}]);
+
+app.controller("PlaylistController", ["$scope", 'Tracks', 'Playlist', 'TrackBack', function($scope, Tracks, Playlist, TrackBack){
 
 }]);
