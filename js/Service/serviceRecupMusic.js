@@ -37,7 +37,7 @@ app.service('TrackInitService',['Tracks',function (Tracks) {
 app.service('TrackSearchService',['Tracks',function (Tracks) {
     this.tracksSearch = [];
     this.search= function () {
-        this.tracksSearch = Tracks.recherche(function (success) {
+        this.tracksSearch = Tracks.recherche({namesearch : $scope.search.namesearch, artist_name : $scope.search.artist_name, album_name : $scope.search.artist_name}, function (success) {
             success.forEach(function (element) {
                 this.tracksSearch.push(element);
             })
@@ -53,7 +53,7 @@ app.service('TrackSearchService',['Tracks',function (Tracks) {
 app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
     this.tracksType = [];
     this.searchType = function () {
-        this.tracksType = Tracks.rechercheGenre(function (success) {
+        this.tracksType = Tracks.rechercheGenre({tags : scope.search.genre}, function (success) {
             success.forEach(function (element) {
                 this.tracksType.push(element);
             })
@@ -64,21 +64,38 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
     }
 }]);
 
-app.service('TrackBuzzrateService',['Tracks',function (Tracks) {
-    this.tracksBuzz = [];
-    this.buzzrate= function () {
-        var self = this;
-        Tracks.buzzrate(function (success) {
-            success.results.forEach(function(element){
-                self.tracksBuzz.push(element)
-            })
 
-        })
+app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, TrackBack){
 
-    };
-    this.getTracks = function (){
-        return this.tracksBuzz
-    };
+    this.playlist = [];
+
+    this.getPlaylist = function(){
+      this.playlist = Playlist.query(function(success){});
+    }
+
+    this.addToPlaylist = function(track_id, playlist_id){
+        TrackBack.addToPlaylist({playlist_id : playlist_id, track_id : track_id});
+    }
+
+    this.removePlaylist = function(){
+        Playlist.removePlaylist();
+    }
+
+    this.removeFromPlaylist = function(track_id){
+      TrackBack.removeFromPlaylist({track_id : track_id});
+    }
+
+    this.createPlaylist = function(track_id){
+      Playlist.createPlaylist({track_id : track_id, newPId :  Math.floor((Math.random() * 10000) + 1); });
+    }
+
+    this.addTrack = function(track_id){
+      TrackBack.addTrack({track_id : track_id});
+    }
+
+    this.vote = function(vote, track_id){
+      TrackBack.votes({vote : vote , track_id : track_id});
+    }
 
 }]);
 
