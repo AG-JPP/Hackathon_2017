@@ -5,8 +5,9 @@
 
 
 //service
-app.service('TrackPopularityService',['Tracks',function (Tracks) {
+app.service('TrackInitService',['Tracks',function (Tracks) {
     this.tracksPopularity = [];
+    this.tracksBuzz = [];
     this.init= function () {
         var self = this;
          Tracks.populaire(function (success) {
@@ -14,12 +15,22 @@ app.service('TrackPopularityService',['Tracks',function (Tracks) {
                 self.tracksPopularity.push(element)
             })
 
+        });
+        Tracks.buzzrate(function (success) {
+            success.results.forEach(function(element){
+                self.tracksBuzz.push(element)
+            })
+
         })
 
     };
-    this.getTracks = function (){
+    this.getPopular = function (){
         return this.tracksPopularity
     };
+    this.getBuzz = function (){
+        return this.tracksBuzz
+    };
+
     this.init();
 }]);
 
@@ -52,3 +63,22 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
         return this.tracksType
     }
 }]);
+
+app.service('TrackBuzzrateService',['Tracks',function (Tracks) {
+    this.tracksBuzz = [];
+    this.buzzrate= function () {
+        var self = this;
+        Tracks.buzzrate(function (success) {
+            success.results.forEach(function(element){
+                self.tracksBuzz.push(element)
+            })
+
+        })
+
+    };
+    this.getTracks = function (){
+        return this.tracksBuzz
+    };
+
+}]);
+

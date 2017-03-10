@@ -34,6 +34,7 @@
                                                                           placeholder="Search songs, albums..."></div>
             </div>
         </form>
+
         <div class="navbar-right ">
             <ul class="nav navbar-nav m-n hidden-xs nav-user user">
 
@@ -73,84 +74,14 @@
                                         class="bar3 a3 bg-success"></span> <span
                                         class="bar4 a4 bg-warning dk"></span> <span
                                         class="bar5 a5 bg-danger dker"></span> </span></h2>
-                                <div class="row row-sm">
 
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <div class="item-overlay r r-2x bg-light dker active">
 
-                                                    <div class="center text-center m-t-n"><a
-                                                            href="http://flatfull.com/themes/musik/index.html#"
-                                                            data-toggle="class" class="active">
-                                                        <i class="fa fa-plus i-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                    </div>
-                                                    <div class="bottom padder m-b-sm">
-                                                    </div>
-                                                </div>
-                                                <a href="http://flatfull.com/themes/musik/index.html#"><img
-                                                        src="lib/assets/p10.jpg" alt=""
-                                                        class="r r-2x img-full"></a></div>
-                                            <div class="padder-v"><a href="http://flatfull.com/themes/musik/index.html#"
-                                                                     class="text-ellipsis">Egestas dui nec
-                                                fermentum </a> <a href="http://flatfull.com/themes/musik/index.html#"
-                                                                  class="text-ellipsis text-xs text-muted">Chris Fox</a>
-                                            </div>
-                                        </div>
+
+                                    <div ng-view="">
+                                        <div ng-controller="InitController" class="col-md-7"></div>
                                     </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <div class="item-overlay opacity r r-2x bg-black">
-                                                    <div class="text-info padder m-t-sm text-sm"></div>
-
-                                                    <div class="center text-center m-t-n"><a
-                                                            href="http://flatfull.com/themes/musik/index.html#"
-                                                            data-toggle="class" class="active">
-                                                        <i class="fa fa-plus i-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                    </div>
-
-                                                    <div class="bottom padder m-b-sm"></div>
-                                                </div>
-                                                <a href="http://flatfull.com/themes/musik/index.html#"><img
-                                                        src="lib/assets/p11.jpg" alt=""
-                                                        class="r r-2x img-full"></a></div>
-                                            <div class="padder-v"><a href="http://flatfull.com/themes/musik/index.html#"
-                                                                     class="text-ellipsis">Aliquam sollicitudin
-                                                venenatis ipsum</a> <a
-                                                    href="http://flatfull.com/themes/musik/index.html#"
-                                                    class="text-ellipsis text-xs text-muted">Jack Jason</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                    <div ng-view="" class="col-md-7">
 
 
-                                    </div>
-                                    <div class="col-md-5"><h3 class="font-thin">Top Songs</h3>
-                                        <div class="list-group bg-white list-group-lg no-bg auto"><a
-                                                href="http://flatfull.com/themes/musik/index.html#"
-                                                class="list-group-item clearfix"> <span
-                                                class="pull-right h2 text-muted m-l">1</span> <span
-                                                class="pull-left thumb-sm avatar m-r"> <img
-                                                src="lib/assets/a4.png" alt="..."> </span> <span
-                                                class="clear"> <span>Little Town</span> <small
-                                                class="text-muted clear text-ellipsis">by Chris Fox</small> </span> </a>
-                                           <a href="http://flatfull.com/themes/musik/index.html#"
-                                                    class="list-group-item clearfix"> <span
-                                                    class="pull-right h2 text-muted m-l">5</span> <span
-                                                    class="pull-left thumb-sm avatar m-r"> <img
-                                                    src="lib/assets/a8.png" alt="..."> </span>
-                                                <span class="clear"> <span>Vestibulum ullamcorper</span> <small
-                                                        class="text-muted clear text-ellipsis">by Dan Doorack</small> </span>
-                                            </a></div>
-                                    </div>
-                                </div>
 
                             </section>
                             <footer class="footer bg-dark">
