@@ -11,8 +11,11 @@ app.config(['$routeProvider',
     function ($routeProvider) {
         // Système de routage
         $routeProvider
-            .when('/test', {
-                templateUrl: 'templates/test.html'
+            .when('/search', {
+                templateUrl: 'templates/trackSearch.html'
+            })
+            .when('/searchType', {
+                templateUrl: 'templates/trackSearchType.html'
             });
     }
 ]);
