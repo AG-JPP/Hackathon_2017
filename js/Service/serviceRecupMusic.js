@@ -52,3 +52,37 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
         return this.tracksType
     }
 }]);
+
+app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, TrackBack){
+
+    this.playlist = [];
+
+    this.getPlaylist = function(){
+      this.playlist = Playlist.query(function(success){});
+    }
+
+    this.addToPlaylist = function(track_id, playlist_id){
+        TrackBack.addToPlaylist({playlist_id : playlist_id, track_id : track_id});
+    }
+
+    this.removePlaylist = function(){
+        Playlist.removePlaylist();
+    }
+
+    this.removeFromPlaylist = function(track_id){
+      TrackBack.removeFromPlaylist({track_id : track_id});
+    }
+
+    this.createPlaylist = function(track_id){
+      Playlist.createPlaylist({track_id : track_id, newPId :  Math.floor((Math.random() * 10000) + 1); });
+    }
+
+    this.addTrack = function(track_id){
+      TrackBack.addTrack({track_id : track_id});
+    }
+
+    this.vote = function(vote, track_id){
+      TrackBack.votes({vote : vote , track_id : track_id});
+    }
+
+}]);
