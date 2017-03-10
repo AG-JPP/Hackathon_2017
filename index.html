@@ -14,48 +14,48 @@
 <body class="" cz-shortcut-listen="true">
 <section class="vbox">
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-        <div class="navbar-header aside bg-info nav-xs"><a class="btn btn-link visible-xs"
-                                                           data-toggle="class:nav-off-screen,open"
-                                                           data-target="#nav,html"> <i class="icon-list"></i> </a> <a
-                href="http://flatfull.com/themes/musik/index.html" class="navbar-brand text-lt"> <i
-                class="icon-earphones"></i> <img src="lib/assets/logo.png" alt="." class="hide">
-            <span class="hidden-nav-xs m-l-sm">Musik</span> </a> <a class="btn btn-link visible-xs"
-                                                                    data-toggle="dropdown" data-target=".user"> <i
-                class="icon-settings"></i> </a></div>
+        <div class="navbar-header aside bg-info nav-xs">
+          <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+            <i class="icon-list"></i>
+          </a>
+          <a href="" class="navbar-brand text-lt">
+            <i class="icon-earphones"></i>
+            <img src="lib/assets/logo.png" alt="." class="hide" />
+            <span class="hidden-nav-xs m-l-sm">Musik</span>
+          </a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+            <i class="icon-settings"></i>
+          </a>
+        </div>
         <ul class="nav navbar-nav hidden-xs">
 
         </ul>
         <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
             <div class="form-group">
-                <div class="input-group"><span class="input-group-btn"> <button type="submit"
-                                                                                class="btn btn-sm bg-white btn-icon rounded"><i
-                        class="fa fa-search"></i></button> </span> <input type="text"
-                                                                          class="form-control input-sm no-border rounded"
-                                                                          placeholder="Search songs, albums..."></div>
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-white btn-icon rounded">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                  <input type="text" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
+                </div>
             </div>
         </form>
-        <div class="navbar-right ">
-            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-
-                <li class="dropdown"><a href="http://flatfull.com/themes/musik/index.html#"
-                                        class="dropdown-toggle bg clear" data-toggle="dropdown"> <span
-                        class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> <img
-                        src="lib/assets/a0.png" alt="..."> </span> John.Smith <b class="caret"></b>
-                </a>
-                    <ul class="dropdown-menu animated fadeInRight">
-                        <li><span class="arrow top"></span> <a href="http://flatfull.com/themes/musik/index.html#">Settings</a>
-                        </li>
-                        <li><a href="http://flatfull.com/themes/musik/profile.html">Profile</a></li>
-                        <li><a href="http://flatfull.com/themes/musik/index.html#"> <span
-                                class="badge bg-danger pull-right">3</span> Notifications </a></li>
-                        <li><a href="http://flatfull.com/themes/musik/docs.html">Help</a></li>
-                        <li class="divider"></li>
-                        <li><a href="http://flatfull.com/themes/musik/modal.lockme.html"
-                               data-toggle="ajaxModal">Logout</a></li>
-                    </ul>
+        <div class="navbar-left">
+          <ul class="nav navbar-nav hidden-xs">
+            <li>
+              <a class="dropdown-toggle" data-toggle="dropdown">Genres <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li ng-repeat="kind in kinds">
+                  <a href="#" class="small" data-value="{{kind.name}}" tabIndex="-1"><input type="checkbox" />&nbsp;{{kind.name}}</a>
                 </li>
-            </ul>
+              </ul>
+            </li>
+            <li><a href="" ng-click="searchTrackType()">Rechercher par genre &nbsp;<i class="fa fa-search"></i></a></li>
+          </ul>
+
         </div>
+
     </header>
     <section>
         <section class="hbox stretch">
@@ -63,67 +63,65 @@
                 <section class="hbox stretch">
                     <section>
                         <section class="vbox">
-                            <section class="scrollable padder-lg w-f-md" id="bjax-target"><a
-                                    href="http://flatfull.com/themes/musik/index.html#"
-                                    class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i
-                                    class="icon-refresh i-lg inline" id="refresh"></i></a>
-                                <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
-                                                                         style="width:20px;height:20px"> <span
-                                        class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
-                                        class="bar3 a3 bg-success"></span> <span
-                                        class="bar4 a4 bg-warning dk"></span> <span
-                                        class="bar5 a5 bg-danger dker"></span> </span></h2>
-                                <div class="row row-sm">
-
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <div class="item-overlay r r-2x bg-light dker active">
-
-                                                    <div class="center text-center m-t-n"><a
-                                                            href="http://flatfull.com/themes/musik/index.html#"
-                                                            data-toggle="class" class="active">
-                                                        <i class="fa fa-plus i-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                    </div>
-                                                    <div class="bottom padder m-b-sm">
-                                                    </div>
-                                                </div>
-                                                <a href="http://flatfull.com/themes/musik/index.html#"><img
-                                                        src="lib/assets/p10.jpg" alt=""
-                                                        class="r r-2x img-full"></a></div>
-                                            <div class="padder-v"><a href="http://flatfull.com/themes/musik/index.html#"
-                                                                     class="text-ellipsis">Egestas dui nec
-                                                fermentum </a> <a href="http://flatfull.com/themes/musik/index.html#"
-                                                                  class="text-ellipsis text-xs text-muted">Chris Fox</a>
-                                            </div>
+                            <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                              <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin">
+                                <i class="icon-refresh i-lg inline" id="refresh"></i>
+                              </a>
+                              <h2 class="font-thin m-b">Discover
+                                <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                                  <span class="bar1 a1 bg-primary lter"></span>
+                                  <span class="bar2 a2 bg-info lt"></span>
+                                  <span class="bar3 a3 bg-success"></span>
+                                  <span class="bar4 a4 bg-warning dk"></span>
+                                  <span class="bar5 a5 bg-danger dker"></span>
+                                </span>
+                              </h2>
+                              <div class="row row-sm">
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                  <div class="item">
+                                    <div class="pos-rlt">
+                                      <div class="item-overlay r r-2x bg-light dker active">
+                                        <div class="center text-center m-t-n">
+                                          <a href="#" data-toggle="class" class="active">
+                                            <i class="fa fa-plus i-2x" aria-hidden="true"></i>
+                                          </a>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <div class="item-overlay opacity r r-2x bg-black">
-                                                    <div class="text-info padder m-t-sm text-sm"></div>
-
-                                                    <div class="center text-center m-t-n"><a
-                                                            href="http://flatfull.com/themes/musik/index.html#"
-                                                            data-toggle="class" class="active">
-                                                        <i class="fa fa-plus i-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                    </div>
-
-                                                    <div class="bottom padder m-b-sm"></div>
-                                                </div>
-                                                <a href="http://flatfull.com/themes/musik/index.html#"><img
-                                                        src="lib/assets/p11.jpg" alt=""
-                                                        class="r r-2x img-full"></a></div>
-                                            <div class="padder-v"><a href="http://flatfull.com/themes/musik/index.html#"
-                                                                     class="text-ellipsis">Aliquam sollicitudin
-                                                venenatis ipsum</a> <a
-                                                    href="http://flatfull.com/themes/musik/index.html#"
-                                                    class="text-ellipsis text-xs text-muted">Jack Jason</a></div>
+                                        <div class="bottom padder m-b-sm">
                                         </div>
+                                      </div>
+                                      <a href="http://flatfull.com/themes/musik/index.html#">
+                                        <img src="lib/assets/p10.jpg" alt="" class="r r-2x img-full"/>
+                                      </a>
                                     </div>
+                                    <div class="padder-v">
+                                      <a href="#" class="text-ellipsis">Egestas dui nec fermentum </a>
+                                      <a href="#" class="text-ellipsis text-xs text-muted">Chris Fox</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                  <div class="item">
+                                    <div class="pos-rlt">
+                                      <div class="item-overlay opacity r r-2x bg-black">
+                                        <div class="text-info padder m-t-sm text-sm"></div>
+                                          <div class="center text-center m-t-n">
+                                            <a href="#" data-toggle="class" class="active">
+                                              <i class="fa fa-plus i-2x" aria-hidden="true"></i>
+                                            </a>
+                                          </div>
+
+                                          <div class="bottom padder m-b-sm"></div>
+                                        </div>
+                                        <a href="#">
+                                          <img src="lib/assets/p11.jpg" alt="" class="r r-2x img-full"/>
+                                        </a>
+                                      </div>
+                                      <div class="padder-v">
+                                        <a href="#" class="text-ellipsis">Aliquam sollicitudinvenenatis ipsum</a>
+                                        <a href="#" class="text-ellipsis text-xs text-muted">Jack Jason</a>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
 
                                 <div class="row">
@@ -396,6 +394,7 @@
 <script type="text/javascript" src="lib/assets/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="lib/assets/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="lib/assets/demo.js"></script>
+<script type="text/javascript" src="lib/app.js"></script>
 <script type="text/javascript" src="lib/angular.min.js"></script>
 <script type="text/javascript" src="lib/angular-animate.min.js"></script>
 <script type="text/javascript" src="lib/angular-resource.min.js"></script>
