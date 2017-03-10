@@ -3,6 +3,11 @@
  */
 
 //Controller
-app.controller("testController",['$scope', 'Tracks',function ($scope,Tracks) {
+app.controller("MainController",['$scope', 'Tracks', 'TrackPopularityService'function ($scope,Tracks, TrackPopularityService) {
+
+    $scope.getPopulairesTracks = function(){
+      var tracks = TrackPopularityService.getPopulairesTracks();
+      console.log(tracks);
+    }
 
 }]);
