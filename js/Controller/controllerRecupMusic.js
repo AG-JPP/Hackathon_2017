@@ -4,11 +4,14 @@
 
 //Controller
 
-app.controller("PopularController",['$scope', 'TrackPopularityService', function ($scope,Tracks, TrackPopularityService) {
+
+app.controller("InitController",['$scope', 'Tracks', 'TrackInitService', function ($scope,Tracks, TrackInitService) {
+
 
     $scope.getPopulairesTracks = function(){
-      $scope.tracks = TrackPopularityService.getTracks();
-      console.log($scope.tracks);
+      $scope.tracksPopular = TrackInitService.getPopular();
+      $scope.tracksBuzz = TrackInitService.getBuzz();
+      console.log($scope.tracksPopular);
     }
     $scope.getPopulairesTracks();
 }]);
@@ -63,3 +66,6 @@ app.controller("PlaylistController", ["$scope", 'playlistService' function($scop
     }
 
 }]);
+
+
+
