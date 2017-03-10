@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 10 Mars 2017 à 17:11
+-- Généré le :  Ven 10 Mars 2017 à 17:53
 -- Version du serveur :  5.6.30-1
 -- Version de PHP :  7.0.14-2
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `hackathon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `playlists`
+--
+
+CREATE TABLE `playlists` (
+  `id` int(10) NOT NULL,
+  `track_id` int(10) NOT NULL,
+  `likes` int(5) NOT NULL DEFAULT '0',
+  `dislikes` int(5) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
