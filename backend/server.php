@@ -18,7 +18,12 @@ function votes(){
 }
 
 function addToPlaylist(){
-
+    if(isset($_POST['track_id']) && isset($_POST['playlist_id'])){
+      $playlist = $bdd->prepare('INSERT INTO playlists(id, track_id) VALUES(:playlist_id, :track_id)');
+      $playlist->execute(array('playlist_id' => $_POST['playlist_id'], 'track_id' => $_POST['track_id']));
+    }else{
+      echo("Erreur - playlist_id ou track_id invalide");
+    }
 }
 
 function removePlaylist(){
