@@ -4,7 +4,20 @@ $bdd = new PDO('mysql:host=localhost;dbname=hackathon;charset=utf-8', 'root', 'r
 
 
 
-function votes(){
+function votesPlaylist(){
+    if(isset($_POST['vote']) && isset($_POST['track_id']) && isset($_POST['playlist_id'])){
+      if($_POST['vote'] == 'like'){
+        $query = $bdd->prepare('UPDATE playlists SET likes = likes+1 WHERE track_id= :track_id');
+      }elseif ($_POST['vote'] == 'dislike') {
+        $query = $bdd->prepare('UPDATE playlists SET dislikes = dislikes+1 WHERE track_id= :track_id');
+      }
+      $query->execute(array('track_id' => $_POST['track_id']));
+    }else{
+      echo('Erreur - track_id, vote ou playlist_id invalide');
+    }
+}
+
+function votesTrack(){
   if(isset($_POST['vote']) && isset($_POST['track_id'])){
     if($_POST['vote'] == 'like'){
       $track = $bdd->prepare('UPDATE tracks SET likes = likes+1 WHERE id= :track_id');
