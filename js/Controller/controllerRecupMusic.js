@@ -3,13 +3,14 @@
  */
 
 //Controller
+
 app.controller("PopularController",['$scope', 'Tracks', 'TrackPopularityService', function ($scope,Tracks, TrackPopularityService) {
 
     $scope.getPopulairesTracks = function(){
-      $scope.tracks = TrackPopularityService.getPopulairesTracks();
+      $scope.tracks = TrackPopularityService.getTracks();
       console.log($scope.tracks);
     }
-
+    $scope.getPopulairesTracks();
 }]);
 
 app.controller("SearchController", ['$scope', 'Tracks', 'TrackSearchService', function($scope, Tracks, TrackSearchService){

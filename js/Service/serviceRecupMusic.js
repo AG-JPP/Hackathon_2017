@@ -9,11 +9,13 @@ app.service('TrackPopularityService',['Tracks',function (Tracks) {
     this.tracksPopularity = [];
     this.init= function () {
         var self = this;
-        this.tracksPopularity = Tracks.populaire(function (success) {
-            success.forEach(function (element) {
-                this.tracksPopularity.push(element);
+         Tracks.populaire(function (success) {
+            success.results.forEach(function(element){
+                self.tracksPopularity.push(element)
             })
+
         })
+
     };
     this.getTracks = function (){
         return this.tracksPopularity
