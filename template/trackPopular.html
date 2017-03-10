@@ -1,4 +1,10 @@
 <div ng-controller="InitController">
+    <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
+                                             style="width:20px;height:20px"> <span
+            class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
+            class="bar3 a3 bg-success"></span> <span
+            class="bar4 a4 bg-warning dk"></span> <span
+            class="bar5 a5 bg-danger dker"></span> </span></h2>
     <div class="row row-sm">
         <div ng-repeat="track in tracksBuzz" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <div class="item">
@@ -19,15 +25,15 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
-<div class="row">
-    <div ng-controller="InitController">
+    <div class="col-lg-6">
+        <h2 class="font-thin m-b">Popular <span class="musicbar animate inline m-l-sm"
+                                                style="width:20px;height:20px"> <span
+                class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
+                class="bar3 a3 bg-success"></span> <span
+                class="bar4 a4 bg-warning dk"></span> <span
+                class="bar5 a5 bg-danger dker"></span> </span></h2>
         <div class="row row-sm">
-            <h3>Musique populaires</h3>
-            <div ng-repeat="track in tracksPopular" class="col-xs-6 col-sm-3 ">
+            <div ng-repeat="track in tracksPopular" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                 <div class="item">
                     <div class="pos-rlt">
                         <div class="item-overlay opacity r r-2x bg-black">
@@ -45,11 +51,13 @@
                             class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
                 </div>
             </div>
-
         </div>
     </div>
-('&
-    <div class="col-md-5"><h3 class="font-thin">Top Songs</h3>
+
+
+
+    <div class="col-lg-6">
+        <h3 class="font-thin">Top Songs</h3>
         <div class="list-group bg-white list-group-lg no-bg auto"><a
                 href="http://flatfull.com/themes/musik/index.html#"
                 class="list-group-item clearfix"> <span
@@ -67,6 +75,5 @@
                         class="text-muted clear text-ellipsis">by Dan Doorack</small> </span>
             </a></div>
     </div>
-
-
 </div>
+
