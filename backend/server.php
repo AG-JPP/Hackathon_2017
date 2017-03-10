@@ -1,6 +1,6 @@
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=hackathon;charset=utf-8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=hackathon;charset=utf8','root','root');
 
 
 
@@ -54,7 +54,7 @@ function removeFromPlaylist(){
 }
 
 function createPlaylist(){
-  if(isset($_POST['track_id']), isset($_POST['newPId'])){
+  if(isset($_POST['track_id']) &&  isset($_POST['newPId'])){
     $playlist = $bdd->prepare('INSERT INTO playlists(id, track_id) VALUES(:playlist_id, :track_id)');
     $playlist->execute(array('playlist_id' => $_POST['newPId'], 'track_id' => $_POST['track_id']));
   }else{
