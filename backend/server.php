@@ -27,11 +27,17 @@ function addToPlaylist(){
 }
 
 function removePlaylist(){
-
+    $query = $bdd->query('TRUNCATE TABLE playlist');
+    $query->execute();
 }
 
 function removeFromPlaylist(){
-
+  if(isset($_POST['track_id'])){
+    $playlist = $bdd->prepare('DELETE FROM playlist WHERE track_id = :track_id');
+    $playlist->execute(array('track_id' => $_POST['track_id']));
+  }else{
+    echo("Erreur - track_id invalide");
+  }
 }
 
 function createPlaylist($newPId){
