@@ -53,6 +53,32 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
     }
 }]);
 
-app.service('playlistService', ['Playlist', function(Playlist){
-    
+app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, TrackBack){
+
+    this.playlist = [];
+
+    this.getPlaylist = function(){
+      this.playlist = Playlist.query(function(success){});
+    }
+
+    this.addToPlaylist = function(track_id, playlist_id){
+        TrackBack.addToPlaylist({playlist_id : playlist_id, track_id : track_id});
+    }
+
+    this.removePlaylist = function(){
+
+    }
+
+    this.removeFromPlaylist = function(track_id){
+      TrackBack.removeFromPlaylist({track_id : track_id});
+    }
+
+    this.createPlaylist = function(){
+
+    }
+
+    this.addTrack = function(track_id){
+      TrackBack.addTrack({track_id : track_id});
+    }
+
 }]);

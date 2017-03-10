@@ -13,14 +13,21 @@ app.factory("Tracks", ['$resource', 'api', function ($resource, api) {
             rechercheGenre: {method: 'GET', url: api.url + '&tags=:genre'}
         });
 }]);
-app.factory("Playlist", ['$resource', 'local' function($resource, local){
-    return $resource(local.url,
+
+app.factory("Playlist", ['$resource', 'local', function($resource, local){
+    return $resource(local.url + "playlist/&id=:id" , {id: "@_id"},
     {
-      votes : {method: 'POST', url: local.url + "/votesPlaylist" },
-      addToPlaylist : {method: "POST", url : local.url + "addToPlaylist"},
       removePlaylist : {method : "POST", url : local.url + "removePlaylist"},
-      removeFromPlaylist : {method : "POST", url : local.url + "removeFromPlaylist"},
       createPlaylist : {method : "POST", url : local.url + "createPlaylist"},
-      addTrack : {method : "POST", url : local.url + "addTrack"}
     });
+}]);
+
+app.factory("TrackBack", ['$resource', 'local', function($resource, local){
+    return $resource(local.url + "track/&id=:id", {id: "@_id"},
+  {
+        votes : {method: 'POST', url: local.url + "/votesPlaylist" },
+        addToPlaylist : {method: "POST", url : local.url + "addToPlaylist/&playlist_id:=id&track_id:=id"},
+        removeFromPlaylist : {method : "POST", url : local.url + "removeFromPlaylist/&track_id"},
+        addTrack : {method : "POST", url : local.url + "addTrack"}
+  })
 }]);
