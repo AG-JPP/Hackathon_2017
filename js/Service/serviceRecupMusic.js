@@ -52,3 +52,7 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
         return this.tracksType
     }
 }]);
+
+app.service('playlistService', ['Playlist', function(Playlist){
+    
+}]);

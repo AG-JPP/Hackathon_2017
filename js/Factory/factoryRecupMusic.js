@@ -13,3 +13,14 @@ app.factory("Tracks", ['$resource', 'api', function ($resource, api) {
             rechercheGenre: {method: 'GET', url: api.url + '&tags=:genre'}
         });
 }]);
+app.factory("Playlist", ['$resource', 'local' function($resource, local){
+    return $resource(local.url,
+    {
+      votes : {method: 'POST', url: local.url + "/votesPlaylist" },
+      addToPlaylist : {method: "POST", url : local.url + "addToPlaylist"},
+      removePlaylist : {method : "POST", url : local.url + "removePlaylist"},
+      removeFromPlaylist : {method : "POST", url : local.url + "removeFromPlaylist"},
+      createPlaylist : {method : "POST", url : local.url + "createPlaylist"},
+      addTrack : {method : "POST", url : local.url + "addTrack"}
+    });
+}]);
