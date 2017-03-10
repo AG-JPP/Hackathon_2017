@@ -1,0 +1,23 @@
+<div ng-controller="PopularController">
+    <div class="row row-sm">
+        <h3>Musique populaires</h3>
+        <div ng-repeat="track in tracks" class="col-xs-6 col-sm-3">
+            <div class="item">
+                <div class="pos-rlt">
+                    <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n"><a
+                                href="#"><i
+                                class="fa fa-play-circle i-2x"></i></a></div>
+                    </div>
+                    <a href="#"><img
+                            src="{{track.image}}" alt=""
+                            class="r r-2x img-full"></a></div>
+                <div class="padder-v"><a
+                        href="#"
+                        class="text-ellipsis">{{track.name}}</a> <a
+                        href="#"
+                        class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
+            </div>
+        </div>
+    </div>
+</div>
