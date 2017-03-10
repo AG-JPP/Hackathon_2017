@@ -28,6 +28,6 @@ app.factory("TrackBack", ['$resource', 'local', function($resource, local){
         votes : {method: 'POST', url: local.url + "track/votesPlaylist/&vote:=vote&track_id:=id" },
         addToPlaylist : {method: "POST", url : local.url + "track/addToPlaylist/&playlist_id:=id&track_id:=id"},
         removeFromPlaylist : {method : "POST", url : local.url + "track/removeFromPlaylist/&track_id"},
-        addTrack : {method : "POST", url : local.url + "track/addTrack"}
+        addTrack : {method : "POST", url : local.url + "track/addTrack&track_id:=id"}
   })
 }]);
