@@ -34,8 +34,4 @@ app.controller("SearchTypeController", ['$scope', 'Tracks', 'TrackSearchTypeServ
 
 app.controller("PlaylistController", ["$scope", 'Tracks', 'Playlist', 'TrackBack', function($scope, Tracks, Playlist, TrackBack){
 
-    $scope.addToPlaylist = function(){
-        
-    }
-
 }]);

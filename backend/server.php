@@ -5,7 +5,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=hackathon;charset=utf-8', 'root', 'r
 
 
 function votesPlaylist(){
-    if(isset($_POST['vote']) && isset($_POST['track_id']) && isset($_POST['playlist_id'])){
+    if(isset($_POST['vote']) && isset($_POST['track_id'])){
       if($_POST['vote'] == 'like'){
         $query = $bdd->prepare('UPDATE playlists SET likes = likes+1 WHERE track_id= :track_id');
       }elseif ($_POST['vote'] == 'dislike') {
@@ -13,7 +13,7 @@ function votesPlaylist(){
       }
       $query->execute(array('track_id' => $_POST['track_id']));
     }else{
-      echo('Erreur - track_id, vote ou playlist_id invalide');
+      echo('Erreur - track_id ou vote invalide');
     }
 }
 
@@ -53,14 +53,13 @@ function removeFromPlaylist(){
   }
 }
 
-function createPlaylist($newPId){
-  if(isset($_POST['track_id'])){
+function createPlaylist(){
+  if(isset($_POST['track_id']), isset($_POST['newPId'])){
     $playlist = $bdd->prepare('INSERT INTO playlists(id, track_id) VALUES(:playlist_id, :track_id)');
-    $playlist->execute(array('playlist_id' => $newPId, 'track_id' => $_POST['track_id']));
+    $playlist->execute(array('playlist_id' => $_POST['newPId'], 'track_id' => $_POST['track_id']));
   }else{
     echo('Erreur - track_id invalide');
   }
-
 }
 
 function addTrack(){
