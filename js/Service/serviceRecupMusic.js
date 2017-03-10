@@ -86,7 +86,7 @@ app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, Trac
     }
 
     this.createPlaylist = function(track_id){
-      Playlist.createPlaylist({track_id : track_id, newPId :  Math.floor((Math.random() * 10000) + 1); });
+      Playlist.createPlaylist({track_id : track_id, newPId :  Math.floor((Math.random() * 10000) + 1) });
     }
 
     this.addTrack = function(track_id){

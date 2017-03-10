@@ -35,7 +35,7 @@ app.controller("SearchTypeController", ['$scope', 'TrackSearchTypeService', func
 
 }]);
 
-app.controller("PlaylistController", ["$scope", 'playlistService' function($scope, Tracks, Playlist, TrackBack, playlistService){
+app.controller("PlaylistController", ["$scope", 'playlistService',function($scope, Tracks, Playlist, TrackBack, playlistService){
 
     $scope.getPlaylist = function(){
       $scope.playlist = playlistService.getPlaylist();
