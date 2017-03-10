@@ -1,4 +1,4 @@
-# Hackaton 2017
+# Hackathon 2017
 
 Launay Guillaume
 Pierre Alexandre
