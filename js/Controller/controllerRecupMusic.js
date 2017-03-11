@@ -11,14 +11,14 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
 
     $scope.top = [];
 
-    $scope.getTopTracks = function(){
-      $scope.top = TrackInitService.getTopTracks();
+    $scope.getTopTracks = function () {
+        $scope.top = TrackInitService.getTopTracks();
     };
 
     $scope.hasTop = false;
 
-    if($scope.top.length>0){
-      $scope.hasTop = true;
+    if ($scope.top.length > 0) {
+        $scope.hasTop = true;
     }
 
     $scope.getPopulairesTracks = function () {
@@ -45,7 +45,7 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
             $scope.queue.push(element);
             $http({
                 method: 'POST',
-                url: 'http://localhost:6060/add',
+                url: 'http://192.168.1.131:6060/add',
                 headers: {
                     'Content-type': 'application/json'
                 },
@@ -67,7 +67,49 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
 
     $scope.getQueue = function () {
         return $scope.queue;
+    };
+
+
+    function checkChanged() {
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://192.168.1.131:6060/idle',
+            success: function (data) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://192.168.1.131:6060/current',
+                    success: function (data) {
+                        console.log(data);
+                        $('#current_song_title').empty();
+                        $('#current_song_title').append(data.song.title);
+                        $('#current_song_artist').empty();
+                        $('#current_song_artist').append(data.song.artist);
+                        $scope.currentSong = data;
+
+                    }
+                });
+            }
+
+        }).done(function (data) {
+            checkChanged();
+        });
     }
+
+    $.ajax({
+        type: 'GET',
+        url: 'http://192.168.1.131:6060/current',
+        success: function (data) {
+            console.log(data);
+            $('#current_song_title').empty();
+            $('#current_song_title').append(data.song.title);
+            $('#current_song_artist').empty();
+            $('#current_song_artist').append(data.song.artist);
+            $scope.currentSong = data;
+        }
+    });
+
+    checkChanged();
 }]);
 
 app.controller("SearchController", ['$scope', 'TrackSearchService', function ($scope, Tracks, TrackSearchService) {
