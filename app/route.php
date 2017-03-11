@@ -19,3 +19,5 @@ $app->post('/track/removeFromPlaylist/{track_id}','App\Controllers\TrackControll
 $app->post('/track/addTrack/{track_id}','App\Controllers\TrackController:addTrack')->setName('addTrack');
 
 $app->get('/playlist','App\Controllers\PlaylistController:getPlaylist')->setName('getPlaylist');
+
+$app->get('/tracks', 'App\Controllers\TrackController:getTopTracks')->setName('getTopTracks');

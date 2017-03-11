@@ -7,7 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controllers\\HomeController' => $baseDir . '/app/src/Controllers/HomeController.php',
+    'App\\Controllers\\PlaylistController' => $baseDir . '/app/src/Controllers/PlaylistController.php',
+    'App\\Controllers\\TrackController' => $baseDir . '/app/src/Controllers/TrackController.php',
     'App\\Controllers\\UserController' => $baseDir . '/app/src/Controllers/UserController.php',
+    'App\\Models\\Playlists' => $baseDir . '/app/src/Models/Playlists.php',
+    'App\\Models\\Tracks' => $baseDir . '/app/src/Models/Tracks.php',
     'App\\Models\\User' => $baseDir . '/app/src/Models/User.php',
     'App\\Repositories\\BaseRepository' => $baseDir . '/app/src/Repositories/BaseRepository.php',
     'App\\Repositories\\HomeRepository' => $baseDir . '/app/src/Repositories/HomeRepository.php',

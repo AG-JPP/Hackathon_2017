@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\Tracks as Tracks;
 
 final class TrackController
 {
@@ -18,8 +19,8 @@ final class TrackController
       $this->logger = $c->get('logger');
       $this->router = $c->get('router');
   }
-  
-    function votesPlaylist(){
+
+    function votesPlaylist(Request $request, Response $response,$args){
         if(isset($_POST['vote']) && isset($_POST['track_id'])){
           $t = Tracks::where('track_id','=',$_POST['track_id']);
           $p = Playlist::where('track_id','=',$_POST['track_id']);
@@ -36,7 +37,7 @@ final class TrackController
         }
     }
 
-    function addToPlaylist(){
+    function addToPlaylist(Request $request, Response $response,$args){
         if(isset($_POST['track_id']) && isset($_POST['playlist_id'])){
           $playlist = new Playlist();
           $playlist->id = $_POST['playlist_id'];
@@ -47,7 +48,7 @@ final class TrackController
         }
     }
 
-    function removeFromPlaylist(){
+    function removeFromPlaylist(Request $request, Response $response,$args){
       if(isset($_POST['track_id'])){
         $playlist = Playlist::where('track_id', '=',$_POST['track_id']);
         $playlist->delete();
@@ -56,14 +57,34 @@ final class TrackController
       }
     }
 
-    function addTrack(){
+    function addTrack(Request $request, Response $response,$args){
       if(isset($_POST['track_id'])){
-        $track = new Track();
+        $track = new Tracks();
         $track->track_id = $_POST['track_id'];
         $track->save();
       }else{
         echo("Erreur - track_id invalide");
       }
+    }
+
+    function getTopTracks(Request $request, Response $response,$args){
+      $topTrack = [];
+      $notes = [];
+      foreach (Tracks::all() as $track) {
+        $n = $track->like - $track->dislike;
+        array_push($notes, array($track => $n));
+      }
+      arsort($notes);
+      $i = 0;
+      foreach ($notes as $track => $note) {
+        if($i < 5){
+          array_push($topTrack,$track);
+          $i++;
+        }else{
+          break;
+        }
+      }
+      return $topTrack;
     }
 
 }
