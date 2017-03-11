@@ -19,6 +19,10 @@ final class PlaylistController
         $this->model = $playlist;
     }
 
+    function getPlaylist(){
+      return Playlist::all);
+    }
+
     function removePlaylist(){
         Playlist::truncate();
     }
