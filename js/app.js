@@ -3,9 +3,13 @@
  */
 
 var app = angular.module('hackathon', ['ngResource', 'ngRoute', 'ngSanitize']);
+
 app.constant('api', {'url': 'https://api.jamendo.com/v3.0/albums/tracks/?client_id=56d30c95&format=json'});
 app.constant('local', {'url': 'http://localhost/Hackathon_2017/public/'});
 
+app.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
 
 //Routage
 app.config(['$routeProvider',
