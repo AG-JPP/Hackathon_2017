@@ -8,17 +8,17 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 final class TrackController
 {
-    private $view;
-    private $logger;
-    private $track;
+  private $view;
+  private $logger;
+  private $router;
 
-    public function __construct($view, LoggerInterface $logger, $track)
-    {
-        $this->view = $view;
-        $this->logger = $logger;
-        $this->model = $track;
-    }
-
+  public function __construct($c)
+  {
+      $this->view = $c->get('view');
+      $this->logger = $c->get('logger');
+      $this->router = $c->get('router');
+  }
+  
     function votesPlaylist(){
         if(isset($_POST['vote']) && isset($_POST['track_id'])){
           $t = Tracks::where('track_id','=',$_POST['track_id']);
