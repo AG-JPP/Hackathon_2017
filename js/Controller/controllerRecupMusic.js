@@ -9,6 +9,18 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
 
     $scope.queue = [];
 
+    $scope.top = [];
+
+    $scope.getTopTracks = function(){
+      $scope.top = TrackInitService.getTopTracks();
+    };
+
+    $scope.hasTop = false;
+
+    if($scope.top.length>0){
+      $scope.hasTop = true;
+    }
+
     $scope.getPopulairesTracks = function () {
         $scope.tracksPopular = TrackInitService.getPopular();
         $scope.tracksBuzz = TrackInitService.getBuzz();
@@ -104,6 +116,3 @@ app.controller("PlaylistController", ["$scope", 'playlistService', function ($sc
     }
 
 }]);
-
-
-
