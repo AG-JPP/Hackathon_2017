@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Tracks as Tracks;
 use App\Models\Playlists as Playlist;
 
+
 final class TrackController
 {
   private $view;
@@ -44,6 +45,7 @@ final class TrackController
 
     function addToPlaylist(Request $request, Response $response, $args){
         if(isset($args['track_id']) && isset($args['playlist_id'])){
+
           $playlist = new Playlist();
           $playlist->id = $args['playlist_id'];
           $playlist->track_id = $args['track_id'];
@@ -62,6 +64,7 @@ final class TrackController
       }
     }
 
+
     function addTrack(Request $request, Response $response, $args){
       if(isset($args['track_id'])){
         $track = new Tracks();
@@ -70,6 +73,26 @@ final class TrackController
       }else{
         echo("Erreur - track_id invalide");
       }
+    }
+
+    function getTopTracks(Request $request, Response $response,$args){
+      $topTrack = [];
+      $notes = [];
+      foreach (Tracks::all() as $track) {
+        $n = $track->like - $track->dislike;
+        array_push($notes, array($track => $n));
+      }
+      arsort($notes);
+      $i = 0;
+      foreach ($notes as $track => $note) {
+        if($i < 5){
+          array_push($topTrack,$track);
+          $i++;
+        }else{
+          break;
+        }
+      }
+      return $topTrack;
     }
 
 }

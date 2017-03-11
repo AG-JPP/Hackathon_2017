@@ -20,13 +20,15 @@ final class PlaylistController
         $this->router = $c->get('router');
     }
 
-    function getPlaylist(){
-      return Playlists::all();
+    function getPlaylist(Request $request, Response $response,$args){
+      $ps = Playlists::all();
+      return $ps;
     }
 
-    function removePlaylist(){
+    function removePlaylist(Request $request, Response $response,$args){
         Playlists::truncate();
     }
+
 
     function createPlaylist(Request $request, Response $response, $args){
       if(isset($args['track_id']) &&  isset($args['newPId'])){

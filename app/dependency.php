@@ -107,6 +107,14 @@ $container['Model\User'] = function ($c) {
     return new App\Models\User;
 };
 
+$container['Model\Playlists'] = function ($c) {
+    return new App\Models\Playlists;
+};
+
+$container['Model\Tracks'] = function ($c) {
+    return new App\Models\Tracks;
+};
+
 # -----------------------------------------------------------------------------
 # Factories Repositories
 # -----------------------------------------------------------------------------

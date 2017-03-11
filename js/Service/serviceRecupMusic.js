@@ -8,6 +8,8 @@
 app.service('TrackInitService',['Tracks',function (Tracks) {
     this.tracksPopularity = [];
     this.tracksBuzz = [];
+    this.topTrack = [];
+
     this.init= function () {
         var self = this;
          Tracks.populaire(function (success) {
@@ -21,7 +23,18 @@ app.service('TrackInitService',['Tracks',function (Tracks) {
                 self.tracksBuzz.push(element)
             })
 
-        })
+        });
+        Tracks.topTrack(function(success){
+            success.results.forEach(function(element){
+              Tracks.track({id : element.id}, function(res){
+                res.results.forEach(function(e){
+                  if(element.id == e.id){
+                    self.topTrack.push(e);
+                  }
+                });
+              });
+            });
+        });
 
     };
     this.getPopular = function (){
@@ -29,6 +42,10 @@ app.service('TrackInitService',['Tracks',function (Tracks) {
     };
     this.getBuzz = function (){
         return this.tracksBuzz
+    };
+
+    this.getTopTracks = function(){
+        return this.topTrack;
     };
 
     this.init();
