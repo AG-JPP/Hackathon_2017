@@ -35,11 +35,11 @@ app.controller("SearchTypeController", ['$scope', 'TrackSearchTypeService', func
 
 }]);
 
-app.controller("PlaylistController", ["$scope", 'playlistService',function($scope, Tracks, Playlist, TrackBack, playlistService){
+app.controller("PlaylistController", ["$scope", 'playlistService',function($scope, playlistService){
+    console.log("TEST")
 
-    $scope.getPlaylist = function(){
       $scope.playlist = playlistService.getPlaylist();
-    }
+
 
     $scope.addToPlaylist = function(tid, pid){
       playlistService.addToPlaylist(tid, pid);

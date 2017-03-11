@@ -65,13 +65,22 @@ app.service('TrackSearchTypeService',['Tracks',function (Tracks) {
 }]);
 
 
-app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, TrackBack){
+app.service('playlistService', ['Playlist', 'TrackBack','Tracks', function(Playlist, TrackBack,Tracks){
 
     this.playlist = [];
+    this.tracklist = [];
 
+    var self = this;
     this.getPlaylist = function(){
-      this.playlist = Playlist.query(function(success){});
-    }
+
+       Playlist.query(function(success){
+          success.forEach(function (element) {
+            self.tracklist.push(Tracks.get({'id':element.track_id}))
+          })
+      });
+       console.log(this.tracklist)
+       return this.tracklist;
+    };
 
     this.addToPlaylist = function(track_id, playlist_id){
         TrackBack.addToPlaylist({playlist_id : playlist_id, track_id : track_id});
