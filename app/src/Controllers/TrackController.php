@@ -5,6 +5,8 @@ namespace App\Controllers;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\Tracks as Tracks;
+use App\Models\Playlists as Playlist;
 
 final class TrackController
 {
@@ -18,48 +20,52 @@ final class TrackController
       $this->logger = $c->get('logger');
       $this->router = $c->get('router');
   }
-  
-    function votesPlaylist(){
-        if(isset($_POST['vote']) && isset($_POST['track_id'])){
-          $t = Tracks::where('track_id','=',$_POST['track_id']);
-          $p = Playlist::where('track_id','=',$_POST['track_id']);
-          if($_POST['vote'] == 'like'){
-            $t->like = $t->like + 1;
-            $p->like = $p->like + 1;
-          }elseif ($_POST['vote'] == 'dislike') {
-            $t->dislike = $t->dislike + 1;
-            $p->dislike = $p->dislike + 1;
+
+    function votesPlaylist(Request $request, Response $response, $args){
+      var_dump($args);
+        if(isset($args['vote']) && isset($args['track_id'])){
+          $t = Tracks::where('id','=',$args['track_id'])->first();
+          $p = Playlist::where('track_id','=',$args['track_id'])->first();
+          if($t != null && $p!=null){
+            if($args['vote'] == 'like'){
+              $t->like = $t->like + 1;
+              $p->like = $p->like + 1;
+            }elseif ($args['vote'] == 'dislike') {
+              $t->dislike = $t->dislike + 1;
+              $p->dislike = $p->dislike + 1;
+            }
+            $t->save();
+            $p->save();
           }
-          $t->save();
         }else{
           echo('Erreur - track_id ou vote invalide');
         }
     }
 
-    function addToPlaylist(){
-        if(isset($_POST['track_id']) && isset($_POST['playlist_id'])){
+    function addToPlaylist(Request $request, Response $response, $args){
+        if(isset($args['track_id']) && isset($args['playlist_id'])){
           $playlist = new Playlist();
-          $playlist->id = $_POST['playlist_id'];
-          $playlist->track_id = $_POST['track_id'];
+          $playlist->id = $args['playlist_id'];
+          $playlist->track_id = $args['track_id'];
           $playlist->save();
         }else{
           echo("Erreur - playlist_id ou track_id invalide");
         }
     }
 
-    function removeFromPlaylist(){
-      if(isset($_POST['track_id'])){
-        $playlist = Playlist::where('track_id', '=',$_POST['track_id']);
+    function removeFromPlaylist(Request $request, Response $response, $args){
+      if(isset($args['track_id'])){
+        $playlist = Playlist::where('track_id', '=',$args['track_id']);
         $playlist->delete();
       }else{
         echo("Erreur - track_id invalide");
       }
     }
 
-    function addTrack(){
-      if(isset($_POST['track_id'])){
-        $track = new Track();
-        $track->track_id = $_POST['track_id'];
+    function addTrack(Request $request, Response $response, $args){
+      if(isset($args['track_id'])){
+        $track = new Tracks();
+        $track->id = $args['track_id'];
         $track->save();
       }else{
         echo("Erreur - track_id invalide");

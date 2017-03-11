@@ -94,8 +94,7 @@ app.service('playlistService', ['Playlist', 'TrackBack', function(Playlist, Trac
     }
 
     this.vote = function(vote, track_id){
-      TrackBack.votes({vote : vote , track_id : track_id});
+      TrackBack.votes({vote : vote , track_id : track_id}, {});
     }
 
 }]);
-

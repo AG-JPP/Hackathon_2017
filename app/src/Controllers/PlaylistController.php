@@ -21,18 +21,18 @@ final class PlaylistController
     }
 
     function getPlaylist(){
-      return Playlist::all();
+      return Playlists::all();
     }
 
     function removePlaylist(){
         Playlists::truncate();
     }
 
-    function createPlaylist(){
-      if(isset($_POST['track_id']) &&  isset($_POST['newPId'])){
+    function createPlaylist(Request $request, Response $response, $args){
+      if(isset($args['track_id']) &&  isset($args['newPId'])){
         $p = new Playlists();
-        $p->track_id = $_POST['track_id'];
-        $p->id = $_POST['newPId'];
+        $p->track_id = $args['track_id'];
+        $p->id = $args['newPId'];
         $p->save();
       }else{
         echo('Erreur - track_id invalide');
