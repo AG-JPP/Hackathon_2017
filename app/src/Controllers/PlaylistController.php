@@ -5,18 +5,19 @@ namespace App\Controllers;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\Playlists as Playlists;
 
 final class PlaylistController
 {
     private $view;
     private $logger;
-    private $playlist;
+    private $router;
 
-    public function __construct($view, LoggerInterface $logger, $playlist)
+    public function __construct($c)
     {
-        $this->view = $view;
-        $this->logger = $logger;
-        $this->model = $playlist;
+        $this->view = $c->get('view');
+        $this->logger = $c->get('logger');
+        $this->router = $c->get('router');
     }
 
     function getPlaylist(){
@@ -24,12 +25,12 @@ final class PlaylistController
     }
 
     function removePlaylist(){
-        Playlist::truncate();
+        Playlists::truncate();
     }
 
     function createPlaylist(){
       if(isset($_POST['track_id']) &&  isset($_POST['newPId'])){
-        $p = new Playlist();
+        $p = new Playlists();
         $p->track_id = $_POST['track_id'];
         $p->id = $_POST['newPId'];
         $p->save();
