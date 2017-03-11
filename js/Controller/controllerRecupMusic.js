@@ -24,7 +24,9 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
             }
         });
 
+
         if (!alreadyExist) {
+            var success = false;
             $scope.queue.push(element);
             $http({
                 method: 'POST',
@@ -34,10 +36,14 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
                 },
                 responseType: 'json',
                 data: {"entry": element.audio}
-            }).then(function (element) {
-                TrackBack.addToPlaylist({"id": 1, "track_id" : element.id},{});
-                TrackBack.addTrack({"track_id":element.id},{});
+            }).then(function (data) {
+                console.log(data);
+                success = true;
+
             });
+
+            TrackBack.addToPlaylist({"id": 1, "track_id": element.id}, {});
+            TrackBack.addTrack({"track_id": element.id}, {});
 
             $scope.queue = $scope.getQueue();
         }
