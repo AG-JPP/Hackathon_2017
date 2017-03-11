@@ -20,7 +20,7 @@ final class PlaylistController
     }
 
     function getPlaylist(){
-      return Playlist::all);
+      return Playlist::all();
     }
 
     function removePlaylist(){
