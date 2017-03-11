@@ -1,60 +1,65 @@
 <section>
-<section class="vbox">
-<section class="scrollable padder-lg w-f-md" id="bjax-target">
+    <section class="vbox">
+        <section class="scrollable padder-lg w-f-md" id="bjax-target">
 
-<div  ng-init="getPopulairesTracks()">
-    <div class="col-lg-12">
-        <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
-                                                 style="width:20px;height:20px"> <span
-                class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
-                class="bar3 a3 bg-success"></span> <span
-                class="bar4 a4 bg-warning dk"></span> <span
-                class="bar5 a5 bg-danger dker"></span> </span></h2>
-        <div class="row row-sm">
-            <div ng-repeat="track in tracksBuzz" class="col-xs-6 col-sm-4 col-md-2 col-lg-2"  ng-click="addToQueue(track)">
-                <div class="item">
-                    <div class="pos-rlt">
-                        <div class="item-overlay opacity r r-2x bg-black">
-                            <div class="center text-center m-t-n"><a><i
-                                    class="fa fa-play-circle i-2x"></i></a></div>
+            <div ng-init="getPopulairesTracks()">
+                <div class="col-lg-12">
+                    <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm"
+                                                             style="width:20px;height:20px"> <span
+                            class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
+                            class="bar3 a3 bg-success"></span> <span
+                            class="bar4 a4 bg-warning dk"></span> <span
+                            class="bar5 a5 bg-danger dker"></span> </span></h2>
+                    <div class="row row-sm">
+                        <div ng-repeat="track in tracksBuzz" class="col-xs-6 col-sm-4 col-md-2 col-lg-2"
+                             ng-click="addToQueue(track)">
+                            <div class="item">
+                                <div class="pos-rlt">
+                                    <div class="item-overlay opacity r r-2x bg-black">
+                                        <div class="center text-center m-t-n"><a><i
+                                                class="fa fa-play-circle i-2x"></i></a></div>
+                                    </div>
+                                    <a href="#"><img
+                                            src="{{track.image}}" alt=""
+                                            class="r r-2x img-full"></a></div>
+                                <div class="padder-v"><a
+                                        href="#"
+                                        class="text-ellipsis">{{track.name}}</a> <a
+                                        href="#"
+                                        class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
+                            </div>
                         </div>
-                        <a href="#"><img
-                                src="{{track.image}}" alt=""
-                                class="r r-2x img-full"></a></div>
-                    <div class="padder-v"><a
-                            href="#"
-                            class="text-ellipsis">{{track.name}}</a> <a
-                            href="#"
-                            class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <h2 class="font-thin m-b">Popular <span class="musicbar animate inline m-l-sm"
-                                                style="width:20px;height:20px"> <span
-                class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
-                class="bar3 a3 bg-success"></span> <span
-                class="bar4 a4 bg-warning dk"></span> <span
-                class="bar5 a5 bg-danger dker"></span> </span></h2>
-        <div class="row row-sm">
-            <div ng-repeat="track in tracksPopular" class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
-                <div class="item">
-                    <div class="pos-rlt">
-                        <div class="item-overlay opacity r r-2x bg-black">
-                            <div class="center text-center m-t-n"><a
-                                    href="#"><i
-                                    class="fa fa-play-circle i-2x"></i></a></div>
+                <div class="col-lg-6">
+                    <h2 class="font-thin m-b">Popular <span class="musicbar animate inline m-l-sm"
+                                                            style="width:20px;height:20px"> <span
+                            class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
+                            class="bar3 a3 bg-success"></span> <span
+                            class="bar4 a4 bg-warning dk"></span> <span
+                            class="bar5 a5 bg-danger dker"></span> </span></h2>
+                    <div class="row row-sm">
+                        <div ng-repeat="track in tracksPopular" class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                            <div class="item">
+                                <div class="pos-rlt">
+                                    <div class="item-overlay opacity r r-2x bg-black">
+                                        <div class="center text-center m-t-n"><a
+                                                href="#"><i
+                                                class="fa fa-play-circle i-2x"></i></a></div>
+                                    </div>
+                                    <a href="#"><img
+                                            src="{{track.image}}" alt=""
+                                            class="r r-2x img-full"></a></div>
+                                <div class="padder-v"><a
+                                        href="#"
+                                        class="text-ellipsis">{{track.name}}</a> <a
+                                        href="#"
+                                        class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
+                            </div>
                         </div>
-                        <a href="#"><img
-                                src="{{track.image}}" alt=""
-                                class="r r-2x img-full"></a></div>
-                    <div class="padder-v"><a
-                            href="#"
-                            class="text-ellipsis">{{track.name}}</a> <a
-                            href="#"
-                            class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -84,100 +89,69 @@
 </section>
 
 
-<footer class="footer bg-dark">
-    <div id="jp_container_N" class="jp-video-270p">
-        <div class="jp-type-playlist">
-            <div id="jplayer_N" class="jp-jplayer hide"
-                 style="width: 480px; height: 270px;"><img id="jp_poster_0"
-                                                           src="lib/assets/m0.jpg"
-                                                           style="width: 480px; height: 270px; display: inline;">
-                <audio id="jp_audio_0" preload="metadata"
-                       src="http://flatfull.com/themes/assets/musics/Miaow-07-Bubble.ogg"
-                       title="Bubble"></audio>
-                <video id="jp_video_0" preload="metadata" title="Bubble"
-                       style="width: 0px; height: 0px;"></video>
+                <div class="col-lg-6">
+                    <h3 class="font-thin">Top Songs</h3>
+                    <div class="list-group bg-white list-group-lg no-bg auto"><a
+                            href="http://flatfull.com/themes/musik/index.html#"
+                            class="list-group-item clearfix"> <span
+                            class="pull-right h2 text-muted m-l">1</span> <span
+                            class="pull-left thumb-sm avatar m-r"> <img
+                            src="lib/assets/a4.png" alt="..."> </span> <span
+                            class="clear"> <span>Little Town</span> <small
+                            class="text-muted clear text-ellipsis">by Chris Fox</small> </span> </a>
+                        <a href="http://flatfull.com/themes/musik/index.html#"
+                           class="list-group-item clearfix"> <span
+                                class="pull-right h2 text-muted m-l">5</span> <span
+                                class="pull-left thumb-sm avatar m-r"> <img
+                                src="lib/assets/a8.png" alt="..."> </span>
+                            <span class="clear"> <span>Vestibulum ullamcorper</span> <small
+                                    class="text-muted clear text-ellipsis">by Dan Doorack</small> </span>
+                        </a></div>
+                </div>
             </div>
-            <div class="jp-gui">
-                <div class="jp-video-play hide" style="display: none;"><a
-                        class="jp-video-play-icon">play</a></div>
-                <div class="jp-interface">
-                    <div class="jp-controls">
-                        <div>
-                            <a class="jp-like"><i class="fa fa-thumbs-o-up i-lg"
-                                                  aria-hidden="true"></i></a>
-                        </div>
 
-                        <div><a class="jp-dislike"><i class="fa fa-thumbs-o-down i-lg"
-                                                      aria-hidden="true"></i></a></div>
+        </section>
 
-                        <div class="jp-progress hidden-xs">
-                            <div class="jp-seek-bar dk" style="width: 100%;">
-                                <div class="jp-play-bar bg-info"
-                                     style="width: 15.5926%;"></div>
-                                <div class="jp-title text-lt" style="display: none;">
-                                    Bubble
+
+        <footer class="footer bg-dark">
+            <div id="jp_container_N" class="jp-video-270p">
+                <div class="jp-type-playlist">
+                    <div id="jplayer_N" class="jp-jplayer hide"
+                         style="width: 480px; height: 270px;"><img id="jp_poster_0"
+                                                                   src="lib/assets/m0.jpg"
+                                                                   style="width: 480px; height: 270px; display: inline;">
+                        <audio id="jp_audio_0" preload="metadata"
+                               src="http://flatfull.com/themes/assets/musics/Miaow-07-Bubble.ogg"
+                               title="Bubble"></audio>
+                        <video id="jp_video_0" preload="metadata" title="Bubble"
+                               style="width: 0px; height: 0px;"></video>
+                    </div>
+                    <div class="jp-gui">
+                        <div class="jp-video-play hide" style="display: none;"><a
+                                class="jp-video-play-icon">play</a></div>
+                        <div class="jp-interface">
+                            <div class="jp-controls">
+                                <div>
+                                    <audio controls="controls" autoplay="true">
+                                        <source src="http://192.168.1.131:8001/mpd.ogg" type="audio/ogg" />
+                                    </audio>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted">
-                            00:32
-                        </div>
-                        <div class="hidden-xs hidden-sm jp-duration text-xs text-muted">
-                            03:29
-                        </div>
-                        <div class="hidden-xs hidden-sm"><a class="jp-mute" title="mute"><i
-                                class="icon-volume-2"></i></a> <a class="jp-unmute hid"
-                                                                  title="unmute"
-                                                                  style="display: none;"><i
-                                class="icon-volume-off"></i></a></div>
-                        <div class="hidden-xs hidden-sm jp-volume">
-                            <div class="jp-volume-bar dk">
-                                <div class="jp-volume-bar-value lter"
-                                     style="width: 80%;"></div>
-                            </div>
-                        </div>
 
 
-                        <div class="hide"><a class="jp-full-screen" title="full screen"><i
-                                class="fa fa-expand"></i></a> <a class="jp-restore-screen"
-                                                                 title="restore screen"
-                                                                 style="display: none;"><i
-                                class="fa fa-compress text-lt"></i></a></div>
+                        </div>
+                    </div>
+
+                    <div class="jp-no-solution hide" style="display: none;">
+                        <span>Update Required</span> To play the media you will need to either
+                        update your browser to a recent version or update your <a
+                            href="http://get.adobe.com/flashplayer/" target="_blank">Flash
+                        plugin</a>.
                     </div>
                 </div>
             </div>
-            <div class="jp-playlist dropup" id="playlist">
-                <ul class="dropdown-menu aside-xl dker" style="display: block;">
-                    <li class="jp-playlist-current">
-                        <div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a
-                                href="javascript:;"
-                                class="jp-playlist-item jp-playlist-current" tabindex="1">Bubble
-                            <span class="jp-artist">by Miaow</span></a></div>
-                    </li>
-                    <li>
-                        <div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a
-                                href="javascript:;" class="jp-playlist-item" tabindex="1">Lentement
-                            <span class="jp-artist">by Miaow</span></a></div>
-                    </li>
-                    <li>
-                        <div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a
-                                href="javascript:;" class="jp-playlist-item" tabindex="1">Partir
-                            <span class="jp-artist">by Miaow</span></a></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="jp-no-solution hide" style="display: none;">
-                <span>Update Required</span> To play the media you will need to either
-                update your browser to a recent version or update your <a
-                    href="http://get.adobe.com/flashplayer/" target="_blank">Flash
-                plugin</a>.
-            </div>
-        </div>
-    </div>
-</footer>
+        </footer>
 
-</section>
+    </section>
 </section>
 
 <aside class="aside-md bg-light dk" id="sidebar">
@@ -198,17 +172,25 @@
 
             </ul>
         </section>
-        <footer class="footer footer-md bg-black">
-            <form class="" role="search">
-                <div class="form-group clearfix m-b-none">
-                    <div class="input-group m-t m-b"><span class="input-group-btn"> <button
-                            type="submit" class="btn btn-sm bg-empty text-muted btn-icon"><i
-                            class="fa fa-search"></i></button> </span> <input type="text"
-                                                                              class="form-control input-sm text-white bg-empty b-b b-dark no-border"
-                                                                              placeholder="Search members">
-                    </div>
-                </div>
-            </form>
+        <footer class="footer footer-md bg-dark">
+
         </footer>
     </section>
 </aside>
+
+
+<script>$(document).ready(function () {
+    $('.jp-mute').click(function () {
+        console.log($('audio').attr('muted'));
+        if ($('audio').muted === false) {
+            $('audio').muted = true;
+        } else {
+            $('audio').muted = false;
+        }
+    })
+
+});
+
+
+</script>
+

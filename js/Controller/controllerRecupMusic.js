@@ -29,7 +29,6 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
 
     $scope.addToQueue = function (element) {
         var alreadyExist = false;
-
         $.each($scope.queue, function (k, v) {
             if (element.id === v.id && alreadyExist === false) {
                 alreadyExist = true;
@@ -42,7 +41,7 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
             $scope.queue.push(element);
             $http({
                 method: 'POST',
-                url: 'http://192.168.1.131:6060/add',
+                url: 'http://localhost:6060/add',
                 headers: {
                     'Content-type': 'application/json'
                 },
