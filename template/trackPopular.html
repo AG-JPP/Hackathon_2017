@@ -11,7 +11,8 @@
                             class="bar4 a4 bg-warning dk"></span> <span
                             class="bar5 a5 bg-danger dker"></span> </span></h2>
                     <div class="row row-sm">
-                        <div ng-repeat="track in tracksBuzz" class="col-xs-6 col-sm-4 col-md-2 col-lg-2"
+                        <div ng-repeat="track in tracksBuzz  | filter: search"
+                             class="col-xs-6 col-sm-4 col-md-2 col-lg-2"
                              ng-click="addToQueue(track)">
                             <div class="item">
                                 <div class="pos-rlt">
@@ -39,21 +40,19 @@
                             class="bar4 a4 bg-warning dk"></span> <span
                             class="bar5 a5 bg-danger dker"></span> </span></h2>
                     <div class="row row-sm">
-                        <div ng-repeat="track in tracksPopular" class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                        <div ng-repeat="track in tracksPopular | filter:search"
+                             class="col-xs-6 col-sm-4 col-md-2 col-lg-2" ng-click="addToQueue(track)">
                             <div class="item">
                                 <div class="pos-rlt">
                                     <div class="item-overlay opacity r r-2x bg-black">
-                                        <div class="center text-center m-t-n"><a
-                                                href="#"><i
+                                        <div class="center text-center m-t-n"><a><i
                                                 class="fa fa-play-circle i-2x"></i></a></div>
                                     </div>
-                                    <a href="#"><img
+                                    <a><img
                                             src="{{track.image}}" alt=""
                                             class="r r-2x img-full"></a></div>
                                 <div class="padder-v"><a
-                                        href="#"
                                         class="text-ellipsis">{{track.name}}</a> <a
-                                        href="#"
                                         class="text-ellipsis text-xs text-muted">{{track.artist_name}}</a></div>
                             </div>
                         </div>
@@ -61,30 +60,28 @@
                 </div>
 
             </div>
-        </div>
-    </div>
+            </div>
+            </div>
 
 
-
-    <div class="col-lg-6">
-        <h3 class="font-thin">Top Songs</h3>
-        <div class="list-group bg-white list-group-lg no-bg auto">
-          <div ng-repeat="track in top">
-          <a   ng-show="hasTop"
-                href="#"
-                class="list-group-item clearfix"> <span
-                class="pull-right h2 text-muted m-l"></span> <span
-                class="pull-left thumb-sm avatar m-r"> <img
-                src="{{track.image}}" alt="..."/> </span> <span
-                class="clear"> <span>{{track.name}}</span> <small
-                class="text-muted clear text-ellipsis">{{track.artist_name}}</small> </span> </a>
-          <div ng-hide="hasTop">
-            <span>Aucun song trouvé</span>
-          </div>
-        </div>
-        </div>
-    </div>
-</div>
+            <div class="col-lg-6">
+                <h3 class="font-thin">Top Songs</h3>
+                <div class="list-group bg-white list-group-lg no-bg auto">
+                    <div ng-repeat="track in top">
+                        <a ng-show="hasTop"
+                           class="list-group-item clearfix"> <span
+                                class="pull-right h2 text-muted m-l"></span> <span
+                                class="pull-left thumb-sm avatar m-r"> <img
+                                src="{{track.image}}" alt="..."/> </span> <span
+                                class="clear"> <span>{{track.name}}</span> <small
+                                class="text-muted clear text-ellipsis">{{track.artist_name}}</small> </span> </a>
+                        <div ng-hide="hasTop">
+                            <span>Aucun song trouvé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
 
         </section>
@@ -110,22 +107,22 @@
                             <div class="jp-controls">
                                 <div>
                                     <audio controls="controls" autoplay="true">
-                                        <source src="http://192.168.1.131:8001/mpd.ogg" type="audio/ogg" />
+                                        <source src="http://192.168.1.131:8001/mpd.ogg" type="audio/ogg"/>
                                     </audio>
                                 </div>
 
 
+                            </div>
+                        </div>
+
+                        <div class="jp-no-solution hide" style="display: none;">
+                            <span>Update Required</span> To play the media you will need to either
+                            update your browser to a recent version or update your <a
+                                href="http://get.adobe.com/flashplayer/" target="_blank">Flash
+                            plugin</a>.
                         </div>
                     </div>
-
-                    <div class="jp-no-solution hide" style="display: none;">
-                        <span>Update Required</span> To play the media you will need to either
-                        update your browser to a recent version or update your <a
-                            href="http://get.adobe.com/flashplayer/" target="_blank">Flash
-                        plugin</a>.
-                    </div>
                 </div>
-            </div>
         </footer>
 
     </section>
@@ -133,7 +130,20 @@
 
 <aside class="aside-md bg-light dk" id="sidebar">
     <section class="vbox animated fadeInRight">
-        <section class="w-f-md scrollable hover"><h4 class="font-thin m-l-md m-t">Queue : </h4>
+        <section class="w-f-md scrollable hover">
+            <h3 class="font-thin m-l-md m-t">Current : </h3>
+            <ul class="list-group no-bg no-borders auto m-t-n-xxs">
+                <li class="list-group-item" ng-repeat="t in queue track by $index"><span
+                        class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm"> </span>
+                    <div class="clear">
+                        <div id="current_song_title">
+                        </div>
+                        <small class="current_song_artist"></small>
+                    </div>
+                </li>
+            </ul>
+
+            <h4 class="font-thin m-l-md m-t"><b>Queue : </b></h4>
             <ul class="list-group no-bg no-borders auto m-t-n-xxs">
 
                 <li class="list-group-item" ng-repeat="t in queue track by $index"><span
@@ -155,18 +165,3 @@
     </section>
 </aside>
 
-
-<script>$(document).ready(function () {
-    $('.jp-mute').click(function () {
-        console.log($('audio').attr('muted'));
-        if ($('audio').muted === false) {
-            $('audio').muted = true;
-        } else {
-            $('audio').muted = false;
-        }
-    })
-
-});
-
-
-</script>

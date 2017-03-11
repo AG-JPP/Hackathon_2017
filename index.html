@@ -38,26 +38,12 @@
                     </button>
                   </span>
                     <input type="text" class="form-control input-sm no-border rounded"
-                           placeholder="Search songs, albums...">
+                           placeholder="Search songs, albums..." ng-model="search">
                 </div>
             </div>
         </form>
 
-        <div class="navbar-left">
-            <ul class="nav navbar-nav hidden-xs">
-                <li>
-                    <a class="dropdown-toggle" data-toggle="dropdown">Genres <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="kind in kinds">
-                            <a href="#" class="small" data-value="{{kind.name}}" tabIndex="-1"><input type="checkbox"/>&nbsp;{{kind.name}}</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="" ng-click="searchTrackType()">Rechercher par genre &nbsp;<i class="fa fa-search"></i></a>
-                </li>
-            </ul>
 
-        </div>
 
     </header>
     <section>
@@ -86,8 +72,6 @@
 <script type="text/javascript" src="js/Service/serviceRecupMusic.js"></script>
 <script type="text/javascript" src="js/Factory/factoryRecupMusic.js"></script>
 <script type="text/javascript" src="js/Controller/controllerRecupMusic.js"></script>
-
-
 
 </body>
 </html>
