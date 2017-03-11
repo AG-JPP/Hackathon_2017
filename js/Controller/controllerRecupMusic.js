@@ -5,7 +5,7 @@
 //Controller
 
 
-app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http', 'TrackBack', function ($scope, Tracks, TrackInitService, $http, TrackBack) {
+app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http', 'TrackBack', 'playlistService', function ($scope, Tracks, TrackInitService, $http, TrackBack, playlistService) {
 
     $scope.queue = [];
 
@@ -25,6 +25,10 @@ app.controller("InitController", ['$scope', 'Tracks', 'TrackInitService', '$http
         $scope.tracksPopular = TrackInitService.getPopular();
         $scope.tracksBuzz = TrackInitService.getBuzz();
     };
+
+    $scope.vote = function(vote, id){
+      playlistService.vote(vote, id);
+    }
 
 
     $scope.addToQueue = function (element) {
